@@ -9,7 +9,7 @@
 
 __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 {
-    __shared__ int tile[TILE_DIM][TILE_DIM + 1]; 
+    __shared__ int tile[TILE_DIM][TILE_DIM]; 
 
     int x = blockIdx.x * TILE_DIM + threadIdx.x;
     int y = blockIdx.y * TILE_DIM + threadIdx.y;
@@ -31,21 +31,29 @@ __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 
 // Parallel reduction kernel with shared memory and synchronization
 __global__ void reductionKernel(int* data, int size)
-{ 
-        int idx = blockIdx.x * blockDim.x + threadIdx.x;
-        int value = (idx < size) ? data[idx] : 0;
+{
+    extern __shared__ int sdata[];
 
-        // Warp-level reduction using shuffle
-        unsigned mask = 0xffffffff;
-        for (int offset = warpSize / 2; offset > 0; offset >>= 1) {
-            value += __shfl_down_sync(mask, value, offset);
-        }
+    int tid = threadIdx.x;
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
 
-        // Each warp contributes its result by using atomicAdd
-        if ((threadIdx.x & (warpSize - 1)) == 0) {
-            atomicAdd(&data[0], value);
+    // Load data into shared memory
+    sdata[tid] = (idx < size) ? data[idx] : 0;
+    __syncthreads();
+
+    // Perform reduction in shared memory
+    for (int stride = blockDim.x / 2; stride > 0; stride >>= 1) {
+        if (tid < stride) {
+            sdata[tid] += sdata[tid + stride];
         }
+        __syncthreads();
     }
+
+    // Write block result to global memory
+    if (tid == 0) {
+        data[blockIdx.x] = sdata[0];
+    }
+}
 
 cudaError_t naiveTranspose(int* h_out, const int* h_in, int rows, int cols);
 cudaError_t naiveReduction(int* h_result, const int* h_in, int size);
@@ -55,43 +63,63 @@ int main()
 
     printf("=== Naive Matrix Transposition ===\n");
 
-    const int rows = 16;
-    const int cols = 16;
+    const int rows = 4096;
+    const int cols = 4096;
     const int matrixSize = rows * cols;
 
-    // Initialize input matrix (row-major)
-    int h_matrix[matrixSize];
+    // Allocate input matrix on heap (row-major)
+    int* h_matrix = (int*)malloc(matrixSize * sizeof(int));
+    if (h_matrix == NULL) {
+        fprintf(stderr, "Failed to allocate h_matrix!");
+        return 1;
+    }
+
     for (int i = 0; i < matrixSize; i++) {
         h_matrix[i] = i + 1;
     }
 
-    printf("Original Matrix (%d x %d, row-major):\n", rows, cols);
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
+    printf("Original Matrix (%d x %d) - First 16x16:\n", rows, cols);
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 16; j++) {
             printf("%3d ", h_matrix[i * cols + j]);
         }
         printf("\n");
     }
 
-    int h_transposed[matrixSize] = { 0 };
-    cudaError_t cudaStatus = naiveTranspose(h_transposed, h_matrix, rows, cols);
-    if (cudaStatus != cudaSuccess) {
-        fprintf(stderr, "naiveTranspose failed!");
+    int* h_transposed = (int*)malloc(matrixSize * sizeof(int));
+    if (h_transposed == NULL) {
+        fprintf(stderr, "Failed to allocate h_transposed!");
+        free(h_matrix);
         return 1;
     }
 
-    printf("\nTransposed Matrix (%d x %d, row-major):\n", cols, rows);
-    for (int i = 0; i < cols; i++) {
-        for (int j = 0; j < rows; j++) {
+    cudaError_t cudaStatus = naiveTranspose(h_transposed, h_matrix, rows, cols);
+    if (cudaStatus != cudaSuccess) {
+        fprintf(stderr, "naiveTranspose failed!");
+        free(h_matrix);
+        free(h_transposed);
+        return 1;
+    }
+
+    printf("\nTransposed Matrix (%d x %d) - First 16x16:\n", cols, rows);
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 16; j++) {
             printf("%3d ", h_transposed[i * rows + j]);
         }
         printf("\n");
     }
 
-    printf("\n== Naive Reduction (Sum) ===\n");
+    printf("\n=== Naive Reduction (Sum) ===\n");
 
-    const int arraySize = 32;
-    int h_array[arraySize];
+    const int arraySize = 8192;
+    int* h_array = (int*)malloc(arraySize * sizeof(int));
+    if (h_array == NULL) {
+        fprintf(stderr, "Failed to allocate h_array!");
+        free(h_matrix);
+        free(h_transposed);
+        return 1;
+    }
+
     int h_sum = 0;
 
     for (int i = 0; i < arraySize; i++) {
@@ -99,17 +127,25 @@ int main()
         h_sum += h_array[i];
     }
 
-    printf("Original Array: ");
-    for (int i = 0; i < arraySize; i++) {
-        printf("%d ", h_array[i]);
-    }
-    printf("\n");
     printf("Expected Sum: %d\n", h_sum);
 
-    int h_result[1] = { 0 };
+    int* h_result = (int*)malloc(sizeof(int));
+    if (h_result == NULL) {
+        fprintf(stderr, "Failed to allocate h_result!");
+        free(h_matrix);
+        free(h_transposed);
+        free(h_array);
+        return 1;
+    }
+
+    h_result[0] = 0;
     cudaStatus = naiveReduction(h_result, h_array, arraySize);
     if (cudaStatus != cudaSuccess) {
         fprintf(stderr, "naiveReduction failed!");
+        free(h_matrix);
+        free(h_transposed);
+        free(h_array);
+        free(h_result);
         return 1;
     }
 
@@ -119,8 +155,18 @@ int main()
     cudaStatus = cudaDeviceReset();
     if (cudaStatus != cudaSuccess) {
         fprintf(stderr, "cudaDeviceReset failed!");
+        free(h_matrix);
+        free(h_transposed);
+        free(h_array);
+        free(h_result);
         return 1;
     }
+
+    // Free allocated memory
+    free(h_matrix);
+    free(h_transposed);
+    free(h_array);
+    free(h_result);
 
     return 0;
 }
@@ -256,7 +302,7 @@ cudaError_t naiveReduction(int* h_result, const int* h_in, int size)
     // Record start time
     cudaEventRecord(start);
 
-    // Launch reduction kernel with shared memory
+    // Launch first reduction kernel with shared memory
     reductionKernel << <gridSize, blockSize, blockSize * sizeof(int) >> > (dev_data, size);
 
     // Check for launch errors
@@ -271,6 +317,25 @@ cudaError_t naiveReduction(int* h_result, const int* h_in, int size)
     if (cudaStatus != cudaSuccess) {
         fprintf(stderr, "cudaDeviceSynchronize failed!");
         goto Error;
+    }
+
+    // Second reduction: reduce the block results
+    if (gridSize > 1) {
+        reductionKernel << <1, blockSize, blockSize * sizeof(int) >> > (dev_data, gridSize);
+
+        // Check for launch errors
+        cudaStatus = cudaGetLastError();
+        if (cudaStatus != cudaSuccess) {
+            fprintf(stderr, "reductionKernel (second pass) launch failed: %s\n", cudaGetErrorString(cudaStatus));
+            goto Error;
+        }
+
+        // Synchronize
+        cudaStatus = cudaDeviceSynchronize();
+        if (cudaStatus != cudaSuccess) {
+            fprintf(stderr, "cudaDeviceSynchronize failed!");
+            goto Error;
+        }
     }
 
     // Record stop time

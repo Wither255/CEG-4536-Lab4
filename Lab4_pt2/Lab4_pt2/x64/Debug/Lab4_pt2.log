@@ -1,156 +1,176 @@
 ﻿  Compiling CUDA source file kernel.cu...
   
   C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\bin\nvcc.exe" -gencode=arch=compute_75,code=\"sm_75,compute_75\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\include"  -G   --keep-dir Lab4_pt2\x64\Debug  -maxrregcount=0    --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/FdLab4_pt2\x64\Debug\vc143.pdb" -o "C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\Lab4_pt2\x64\Debug\kernel.cu.obj" "C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu" 
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(150): warning #546-D: transfer of control bypasses initialization of:
-              variable "matrixSize" (declared at line 153)
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(190): warning #546-D: transfer of control bypasses initialization of:
+              variable "matrixSize" (declared at line 193)
+              variable "blockSize" (declared at line 217)
+              variable "gridSize" (declared at line 218)
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
   Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(159): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(199): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 217)
+              variable "gridSize" (declared at line 218)
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(165): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(205): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 217)
+              variable "gridSize" (declared at line 218)
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(172): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(212): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 217)
+              variable "gridSize" (declared at line 218)
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(191): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(231): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(198): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(238): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(241): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(281): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 299)
+              variable "gridSize" (declared at line 300)
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(248): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(288): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 299)
+              variable "gridSize" (declared at line 300)
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(255): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(295): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 299)
+              variable "gridSize" (declared at line 300)
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(272): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(312): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(279): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(319): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(150): warning #546-D: transfer of control bypasses initialization of:
-              variable "matrixSize" (declared at line 153)
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(330): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 346)
+                goto Error;
+                ^
+  
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(337): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 346)
+                goto Error;
+                ^
+  
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(190): warning #546-D: transfer of control bypasses initialization of:
+              variable "matrixSize" (declared at line 193)
+              variable "blockSize" (declared at line 217)
+              variable "gridSize" (declared at line 218)
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
   Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(159): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(199): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 217)
+              variable "gridSize" (declared at line 218)
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(165): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(205): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 217)
+              variable "gridSize" (declared at line 218)
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(172): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(212): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 217)
+              variable "gridSize" (declared at line 218)
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(191): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(231): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(198): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 206)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(238): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 246)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(241): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(281): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 299)
+              variable "gridSize" (declared at line 300)
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(248): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(288): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 299)
+              variable "gridSize" (declared at line 300)
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(255): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(295): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 299)
+              variable "gridSize" (declared at line 300)
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(272): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(312): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
   
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(279): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 287)
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(319): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 346)
             goto Error;
             ^
+  
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(330): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 346)
+                goto Error;
+                ^
+  
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(337): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 346)
+                goto Error;
+                ^
   
   kernel.cu
-  tmpxft_0000ebcc_00000000-7_kernel.cudafe1.cpp
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(178): warning C4533: initialization of 'gridSize' is skipped by 'goto Error'
-  C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(178): note: see declaration of 'gridSize'
-  C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(217): note: see declaration of 'Error'
-C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(177): warning C4533: initialization of 'blockSize' is skipped by 'goto Error'
-  C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(177): note: see declaration of 'blockSize'
-  C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(217): note: see declaration of 'Error'
+  tmpxft_00009b58_00000000-7_kernel.cudafe1.cpp
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(218): warning C4533: initialization of 'gridSize' is skipped by 'goto Error'
+  C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(218): note: see declaration of 'gridSize'
+  C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(257): note: see declaration of 'Error'
+C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(217): warning C4533: initialization of 'blockSize' is skipped by 'goto Error'
+  C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(217): note: see declaration of 'blockSize'
+  C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\kernel.cu(257): note: see declaration of 'Error'
   Lab4_pt2.vcxproj -> C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt2\x64\Debug\Lab4_pt2.exe
