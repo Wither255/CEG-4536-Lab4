@@ -35,8 +35,8 @@ int main()
 
     printf("=== Naive Matrix Transposition ===\n");
     
-    const int rows = 512;
-    const int cols = 512;
+    const int rows = 16;
+    const int cols = 16;
     const int matrixSize = rows * cols;
     
     // Initialize input matrix (row-major)
@@ -70,7 +70,7 @@ int main()
 
     printf("\n== Naive Reduction (Sum) ===\n");
     
-    const int arraySize = 512;
+    const int arraySize = 32;
     int h_array[arraySize];
     int h_sum = 0;
     
@@ -147,7 +147,7 @@ cudaError_t naiveTranspose(int *h_out, const int *h_in, int rows, int cols)
     }
     
     // Configure grid and block dimensions
-    dim3 blockSize(512, 512);
+    dim3 blockSize(16, 16);
     dim3 gridSize((cols + blockSize.x - 1) / blockSize.x, 
                   (rows + blockSize.y - 1) / blockSize.y);
     
@@ -229,7 +229,7 @@ cudaError_t naiveReduction(int *h_result, const int *h_in, int size)
     }
     
     // Configure grid: use a single block with enough threads
-    int blockSize = 262144;
+    int blockSize = 256;
     int gridSize = (size + blockSize - 1) / blockSize;
     
     // Record start time

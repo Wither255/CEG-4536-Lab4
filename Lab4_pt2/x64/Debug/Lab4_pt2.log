@@ -145,14 +145,6 @@ C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\kernel.cu(279): wa
             goto Error;
             ^
   
+CUDACOMPILE : ptxas error : Entry function '_Z15transposeKernelPiPKiii' uses too much shared data (0x100800 bytes, 0xc000 max)
   kernel.cu
-  tmpxft_00005f14_00000000-7_kernel.cudafe1.cpp
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\kernel.cu(178): warning C4533: initialization of 'gridSize' is skipped by 'goto Error'
-  C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\kernel.cu(178): note: see declaration of 'gridSize'
-  C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\kernel.cu(217): note: see declaration of 'Error'
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\kernel.cu(177): warning C4533: initialization of 'blockSize' is skipped by 'goto Error'
-  C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\kernel.cu(177): note: see declaration of 'blockSize'
-  C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\kernel.cu(217): note: see declaration of 'Error'
-     Creating library C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\x64\Debug\Lab4_pt2.lib and object C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\x64\Debug\Lab4_pt2.exp
-LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
-  Lab4_pt2.vcxproj -> C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\x64\Debug\Lab4_pt2.exe
+C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 13.0.targets(803,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\bin\nvcc.exe" -gencode=arch=compute_75,code=\"sm_75,compute_75\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0    --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/Fdx64\Debug\vc143.pdb" -o "C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\x64\Debug\kernel.cu.obj" "C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt2\kernel.cu"" exited with code 255.
