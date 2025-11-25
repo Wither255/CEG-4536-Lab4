@@ -32,26 +32,20 @@ __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 // Parallel reduction kernel with shared memory and synchronization
 __global__ void reductionKernel(int* data, int size)
 {
-    extern __shared__ int sdata[];
+        int idx = blockIdx.x * blockDim.x + threadIdx.x;
+        int value = (idx < size) ? data[idx] : 0;
 
-    int tid = threadIdx.x;
-    int idx = blockIdx.x * blockDim.x + threadIdx.x;
-
-    sdata[tid] = (idx < size) ? data[idx] : 0;
-    __syncthreads();
-
-    // Perform reduction
-    for (int stride = blockDim.x / 2; stride > 0; stride >>= 1) {
-        if (tid < stride) {
-            sdata[tid] += sdata[tid + stride];
+        // Warp-level reduction using shuffle
+        unsigned mask = 0xffffffff;
+        for (int offset = warpSize / 2; offset > 0; offset >>= 1) {
+            value += __shfl_down_sync(mask, value, offset);
         }
-        __syncthreads();
-    }
 
-    if (tid == 0) {
-        atomicAdd(&data[0], sdata[0]);
+        // Each warp contributes its result by using atomicAdd
+        if ((threadIdx.x & (warpSize - 1)) == 0) {
+            atomicAdd(&data[0], value);
+        }
     }
-}
 
 cudaError_t naiveTranspose(int* h_out, const int* h_in, int rows, int cols);
 cudaError_t naiveReduction(int* h_result, const int* h_in, int size);
