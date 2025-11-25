@@ -9,7 +9,7 @@
 
 __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 {
-    // Shared memory with +1 column padding 
+    // +1 column padding 
     __shared__ int tile[TILE_DIM][TILE_DIM + 1];
 
     int x = blockIdx.x * TILE_DIM + threadIdx.x;
