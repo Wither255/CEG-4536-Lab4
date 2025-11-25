@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 
-// Tile size is 16x16 to avoid bank conflicts
-#define TILE_DIM 16
-#define BLOCK_ROWS 16
+// Tile size is 512x512 to avoid bank conflicts
+#define TILE_DIM 512
+#define BLOCK_ROWS 512
 
 __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 {
@@ -61,8 +61,8 @@ int main()
 
     printf("=== Naive Matrix Transposition ===\n");
 
-    const int rows = 16;
-    const int cols = 16;
+    const int rows = 512;
+    const int cols = 512;
     const int matrixSize = rows * cols;
 
     // Initialize input matrix (row-major)
@@ -96,7 +96,7 @@ int main()
 
     printf("\n== Naive Reduction (Sum) ===\n");
 
-    const int arraySize = 32;
+    const int arraySize = 1024;
     int h_array[arraySize];
     int h_sum = 0;
 
@@ -256,7 +256,7 @@ cudaError_t naiveReduction(int* h_result, const int* h_in, int size)
     }
 
     // Configure grid: one block per threadblock
-    int blockSize = 256;
+    int blockSize = 262144;
     int gridSize = (size + blockSize - 1) / blockSize;
 
     // Record start time
