@@ -4,8 +4,8 @@
 #include <stdio.h>
 
 // Tile size is 16x16 
-#define TILE_DIM 16
-#define BLOCK_ROWS 16
+#define TILE_DIM 32
+#define BLOCK_ROWS 8
 
 __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 {
@@ -33,24 +33,29 @@ __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 // Parallel reduction kernel with shared memory and synchronization
 __global__ void reductionKernel(int* data, int size)
 {
-    extern __shared__ int sdata[];
-    
-    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    __shared__ int sdata[256 + 256 / 32];
+
     int tid = threadIdx.x;
-    
-    // Load data into shared memory
-    sdata[tid] = (idx < size) ? data[idx] : 0;
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    // Calculate conflict-free address
+    int bankOffset = tid >> 5;  // tid / 32
+
+    // Load element
+    sdata[tid + bankOffset] = (idx < size) ? data[idx] : 0;
     __syncthreads();
-    
-    // Reduction in shared memory
+
+    // Reduction loop
     for (int s = blockDim.x / 2; s > 0; s >>= 1) {
         if (tid < s) {
-            sdata[tid] += sdata[tid + s];
+            int a = tid + (tid >> 5);
+            int b = tid + s + ((tid + s) >> 5);
+            sdata[a] += sdata[b];
         }
         __syncthreads();
     }
-    
-    // Each block writes its result 
+
+    // Write block result
     if (tid == 0) {
         data[blockIdx.x] = sdata[0];
     }
