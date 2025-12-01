@@ -1,150 +1,202 @@
 ﻿  Compiling CUDA source file kernel.cu...
   
   C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\bin\nvcc.exe" -gencode=arch=compute_75,code=\"sm_75,compute_75\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0    --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/Fdx64\Debug\vc143.pdb" -o "C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\x64\Debug\kernel.cu.obj" "C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu" 
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(150): warning #546-D: transfer of control bypasses initialization of:
-              variable "matrixSize" (declared at line 153)
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(196): warning #546-D: transfer of control bypasses initialization of:
+              variable "matrixSize" (declared at line 199)
+              variable "blockSize" (declared at line 223)
+              variable "gridSize" (declared at line 224)
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
   Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(159): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(205): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 223)
+              variable "gridSize" (declared at line 224)
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(165): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(211): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 223)
+              variable "gridSize" (declared at line 224)
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(172): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(218): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 223)
+              variable "gridSize" (declared at line 224)
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(191): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(237): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(198): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(244): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(241): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(287): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 305)
+              variable "gridSize" (declared at line 306)
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(248): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(294): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 305)
+              variable "gridSize" (declared at line 306)
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(255): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(301): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 305)
+              variable "gridSize" (declared at line 306)
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(272): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(318): warning #546-D: transfer of control bypasses initialization of:
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(279): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(325): warning #546-D: transfer of control bypasses initialization of:
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(150): warning #546-D: transfer of control bypasses initialization of:
-              variable "matrixSize" (declared at line 153)
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(332): warning #546-D: transfer of control bypasses initialization of:
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
+            goto Error;
+            ^
+  
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(339): warning #546-D: transfer of control bypasses initialization of:
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
+            goto Error;
+            ^
+  
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(196): warning #546-D: transfer of control bypasses initialization of:
+              variable "matrixSize" (declared at line 199)
+              variable "blockSize" (declared at line 223)
+              variable "gridSize" (declared at line 224)
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
   Remark: The warnings can be suppressed with "-diag-suppress <warning-number>"
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(159): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(205): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 223)
+              variable "gridSize" (declared at line 224)
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(165): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(211): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 223)
+              variable "gridSize" (declared at line 224)
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(172): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 177)
-              variable "gridSize" (declared at line 178)
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(218): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 223)
+              variable "gridSize" (declared at line 224)
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(191): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(237): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(198): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 206)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(244): warning #546-D: transfer of control bypasses initialization of:
+              variable "milliseconds" (declared at line 252)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(241): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(287): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 305)
+              variable "gridSize" (declared at line 306)
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(248): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(294): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 305)
+              variable "gridSize" (declared at line 306)
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(255): warning #546-D: transfer of control bypasses initialization of:
-              variable "blockSize" (declared at line 259)
-              variable "gridSize" (declared at line 260)
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(301): warning #546-D: transfer of control bypasses initialization of:
+              variable "blockSize" (declared at line 305)
+              variable "gridSize" (declared at line 306)
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(272): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(318): warning #546-D: transfer of control bypasses initialization of:
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(279): warning #546-D: transfer of control bypasses initialization of:
-              variable "milliseconds" (declared at line 287)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(325): warning #546-D: transfer of control bypasses initialization of:
+              variable "intermediate" (declared at line 329)
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
             goto Error;
             ^
   
-CUDACOMPILE : ptxas error : Entry function '_Z15transposeKernelPiPKiii' uses too much shared data (0x100800 bytes, 0xc000 max)
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(332): warning #546-D: transfer of control bypasses initialization of:
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
+            goto Error;
+            ^
+  
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(339): warning #546-D: transfer of control bypasses initialization of:
+              variable "final_sum" (declared at line 343)
+              variable "milliseconds" (declared at line 355)
+            goto Error;
+            ^
+  
   kernel.cu
-C:\Program Files\Microsoft Visual Studio\2022\Professional\MSBuild\Microsoft\VC\v170\BuildCustomizations\CUDA 13.0.targets(803,9): error MSB3721: The command ""C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\bin\nvcc.exe" -gencode=arch=compute_75,code=\"sm_75,compute_75\" --use-local-env -ccbin "C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.34.31933\bin\HostX64\x64" -x cu   -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v13.0\include"  -G   --keep-dir x64\Debug  -maxrregcount=0    --machine 64 --compile -cudart static  -g  -DWIN32 -DWIN64 -D_DEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /Od /FS /Zi /RTC1 /MDd " -Xcompiler "/Fdx64\Debug\vc143.pdb" -o "C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\x64\Debug\kernel.cu.obj" "C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu"" exited with code 255.
+  tmpxft_00007c70_00000000-7_kernel.cudafe1.cpp
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(224): warning C4533: initialization of 'gridSize' is skipped by 'goto Error'
+  C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(224): note: see declaration of 'gridSize'
+  C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(263): note: see declaration of 'Error'
+C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(223): warning C4533: initialization of 'blockSize' is skipped by 'goto Error'
+  C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(223): note: see declaration of 'blockSize'
+  C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\kernel.cu(263): note: see declaration of 'Error'
+     Creating library C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\x64\Debug\Lab4_pt3.lib and object C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\x64\Debug\Lab4_pt3.exp
+LINK : warning LNK4098: defaultlib 'LIBCMT' conflicts with use of other libs; use /NODEFAULTLIB:library
+  Lab4_pt3.vcxproj -> C:\Users\yanng\Documents\CEG 4536\Lab4\CEG-4536-Lab4\Lab4_pt3\x64\Debug\Lab4_pt3.exe

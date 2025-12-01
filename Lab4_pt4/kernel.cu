@@ -3,35 +3,48 @@
 
 #include <stdio.h>
 
-// Tile size is 16x16 to avoid bank conflicts
-#define TILE_DIM 16
-#define BLOCK_ROWS 16
+
+__device__ __forceinline__ 
+int warp_shuffle_index(int v, int srcLane, unsigned mask)
+{
+    // Reconstruction d’un shuffle(index) avec shuffle_down seulement
+    for (int offset = 1; offset < 32; offset <<= 1) {
+        int shifted = __shfl_down_sync(mask, v, offset);
+        if ((threadIdx.x & 31) + offset == srcLane)
+            v = shifted;
+    }
+    return v;
+}
 
 __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 {
-    __shared__ int tile[TILE_DIM][TILE_DIM + 1];
+    int global = blockIdx.x * blockDim.x + threadIdx.x;
+    if (global >= rows * cols) return;
 
-    int x = blockIdx.x * TILE_DIM + threadIdx.x;
-    int y = blockIdx.y * TILE_DIM + threadIdx.y;
+    int r = global / cols;
+    int c = global % cols;
 
-    // Read input tile into shared memory
-    if (x < cols && y < rows) {
-        tile[threadIdx.y][threadIdx.x] = in[y * cols + x];
-    }
-    __syncthreads();
+    int v = in[global];
 
-    // Write transposed tile to global memory
-    x = blockIdx.y * TILE_DIM + threadIdx.x;
-    y = blockIdx.x * TILE_DIM + threadIdx.y;
+    unsigned mask = 0xffffffff;
+    int lane = threadIdx.x & 31;
 
-    if (x < rows && y < cols) {
-        out[y * rows + x] = tile[threadIdx.x][threadIdx.y];
-    }
+    // Transpose locale d’un warp 32×32 (conceptuelle)
+    int transposed_lane = c % 32;
+
+    int transposed_value = warp_shuffle_index(v, transposed_lane, mask);
+
+    int out_r = c;
+    int out_c = r;
+
+    if (out_r < cols && out_c < rows)
+        out[out_r * rows + out_c] = transposed_value;
 }
 
 // Optimized reduction kernel with warp shuffle
 __global__ void reductionKernel(int* data, int size)
 {
+<<<<<<< HEAD
     extern __shared__ int sharedMem[];
 
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
@@ -65,6 +78,21 @@ __global__ void reductionKernel(int* data, int size)
 
     // Write block result to global memory
     if (tid == 0) {
+=======
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    int value = (idx < size) ? data[idx] : 0;
+
+    unsigned mask = 0xffffffff;
+
+    // réduction intra-warp
+    for (int offset = 16; offset > 0; offset >>= 1) {
+        value += __shfl_down_sync(mask, value, offset);
+    }
+
+    // le lane 0 du warp écrit son résultat avec atomicAdd
+    if ((threadIdx.x & 31) == 0) {
+>>>>>>> 74c3d800bca7ede129c154b4dcbe9b9c890bacd0
         atomicAdd(&data[0], value);
     }
 }
@@ -228,9 +256,9 @@ cudaError_t naiveTranspose(int* h_out, const int* h_in, int rows, int cols)
 
     // Configure grid and block dimensions
     // For tile-based transposition: one tile per block
-    dim3 blockSize(TILE_DIM, BLOCK_ROWS);
-    dim3 gridSize((cols + TILE_DIM - 1) / TILE_DIM,
-        (rows + TILE_DIM - 1) / TILE_DIM);
+    dim3 blockSize(16, 16);
+    dim3 gridSize((cols + blockSize.x - 1) / blockSize.x, 
+                  (rows + blockSize.y - 1) / blockSize.y);
 
     // Record start time
     cudaEventRecord(start);
