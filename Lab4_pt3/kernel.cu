@@ -33,20 +33,21 @@ __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
 // Parallel reduction kernel with shared memory and synchronization
 __global__ void reductionKernel(int* data, int size)
 {
-    __shared__ int sdata[256 + 256 / 32];
+    // Shared memory with padding to avoid bank conflicts
+    __shared__ int sdata[TILE_DIM + TILE_DIM / 32];
 
     int tid = threadIdx.x;
-    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+    int idx = blockIdx.x * TILE_DIM + threadIdx.x;
 
-    // Calculate conflict-free address
+    // Calculate conflict-free address offset
     int bankOffset = tid >> 5;  // tid / 32
 
-    // Load element
+    // Load element into padded shared memory
     sdata[tid + bankOffset] = (idx < size) ? data[idx] : 0;
     __syncthreads();
 
-    // Reduction loop
-    for (int s = blockDim.x / 2; s > 0; s >>= 1) {
+    // Parallel reduction using conflict-free indexing
+    for (int s = TILE_DIM / 2; s > 0; s >>= 1) {
         if (tid < s) {
             int a = tid + (tid >> 5);
             int b = tid + s + ((tid + s) >> 5);
