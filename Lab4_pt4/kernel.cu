@@ -42,9 +42,10 @@ __global__ void transposeKernel(int* out, const int* in, int rows, int cols)
     }
 }
 
-// Optimized reduction kernel with warp shuffle
+// Parallel reduction kernel with shared memory and synchronization
 __global__ void reductionKernel(int* data, int size)
 {
+<<<<<<< HEAD
     extern __shared__ int sharedMem[];
 
     int idx = blockIdx.x * blockDim.x + threadIdx.x;
@@ -78,6 +79,21 @@ __global__ void reductionKernel(int* data, int size)
 
     // Write block result to global memory
     if (tid == 0) {
+=======
+    int idx = blockIdx.x * blockDim.x + threadIdx.x;
+
+    int value = (idx < size) ? data[idx] : 0;
+
+    unsigned mask = 0xffffffff;
+
+    // réduction intra-warp
+    for (int offset = 16; offset > 0; offset >>= 1) {
+        value += __shfl_down_sync(mask, value, offset);
+    }
+
+    // le lane 0 du warp écrit son résultat avec atomicAdd
+    if ((threadIdx.x & 31) == 0) {
+>>>>>>> 2a8d1a435d7c1e65fd7b20909a78f79c5e65fe40
         atomicAdd(&data[0], value);
     }
 }
@@ -322,16 +338,15 @@ cudaError_t naiveReduction(int* h_result, const int* h_in, int size)
         goto Error;
     }
 
-    // Configure grid and shared memory
+    // Configure grid: use a single block with enough threads
     int blockSize = 256;
     int gridSize = (size + blockSize - 1) / blockSize;
-    int sharedMemSize = blockSize * sizeof(int);
 
     // Record start time
     cudaEventRecord(start);
 
-    // Launch reduction kernel with shared memory
-    reductionKernel<<<gridSize, blockSize, sharedMemSize>>>(dev_data, size);
+    // Launch reduction kernel
+    reductionKernel<<<gridSize, blockSize>>>(dev_data, size);
 
     // Check for launch errors
     cudaStatus = cudaGetLastError();
