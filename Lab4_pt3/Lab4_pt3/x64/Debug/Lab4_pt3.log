@@ -190,7 +190,7 @@ C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt3\ke
             ^
   
   kernel.cu
-  tmpxft_0000af64_00000000-7_kernel.cudafe1.cpp
+  tmpxft_000015dc_00000000-7_kernel.cudafe1.cpp
 C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt3\kernel.cu(219): warning C4533: initialization of 'gridSize' is skipped by 'goto Error'
   C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt3\kernel.cu(219): note: see declaration of 'gridSize'
   C:\Users\louis\OneDrive\Desktop\School Locker\CEG 4536\CEG-4536-Lab4\Lab4_pt3\kernel.cu(258): note: see declaration of 'Error'
